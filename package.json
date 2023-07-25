@@ -1,0 +1,33 @@
+{
+  "name": "node-red-ubyte-arangodb",
+  "version": "1.1.1",
+  "description": "Node for connecting to arangodb",
+  "author": "Paolo Fabris",
+  "license": "MIT",
+  "node-red": {
+    "nodes": {
+      "ArangoDB": "query/query.js",
+      "configuration": "configuration/configuration.js"
+    }
+  },
+  "dependencies": {
+    "arangojs": "^8.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ubyte-source/node-red-ubyte-arangodb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ubyte-source/node-red-ubyte-arangodb/issues"
+  },
+  "homepage": "https://github.com/ubyte-source/node-red-ubyte-arangodb#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "arangodb",
+    "ubyte",
+    "node-red"
+  ],
+  "devDependencies": {}
+}
