@@ -25,17 +25,11 @@ module.exports = function (RED) {
                 });
                 if (done) done();
             }).then(function (response) {
-                if (null === response || false === (Symbol.iterator in Object(response))) {
+                response.map(x => x).then(function (item) {
                     send({
-                        payload: response
-                    });
-                } else {
-                    response.forEach(function (item) {
-                        send({
-                            payload: item
-                        });
-                    });
-                }
+                        payload: item
+                    })
+                })
                 if (done) done();
             });
         });
