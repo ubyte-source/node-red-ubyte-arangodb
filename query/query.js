@@ -1,38 +1,36 @@
 module.exports = function (RED) {
-    function ArangoDBNode(config) {
-        RED.nodes.createNode(this, config);
-        this.configuration = RED.nodes.getNode(config.configuration);
-        let node = this;
-        this.on('input', function (msg, send, done) {
-            const { Database } = require('arangojs');
-            const db = new Database({
-                url: node.configuration.url,
-                databaseName: node.configuration.database,
-                auth: {
-                    username: node.configuration.username,
-                    password: node.configuration.password
-                },
-            });
-            db.query(
-                msg.query,
-                msg.bindVars || {}
-            ).catch(function (error) {
-                send({
-                    payload: {
-                        "status": "ArangoDB Error",
-                        "error": error
-                    }
-                });
-                if (done) done();
-            }).then(function (response) {
-                response.map(x => x).then(function (item) {
-                    send({
-                        payload: item
-                    })
-                })
-                if (done) done();
-            });
+  function ArangoDBNode(config) {
+    RED.nodes.createNode(this, config);
+    this.configuration = RED.nodes.getNode(config.configuration);
+    let node = this;
+    this.on('input', function (msg, send, done) {
+      const { Database } = require('arangojs');
+      const db = new Database({
+        url: node.configuration.url,
+        databaseName: node.configuration.database,
+        auth: {
+          username: node.configuration.username,
+          password: node.configuration.password
+        },
+      });
+      db.query({
+        query: msg.query,
+        bindVars: msg.bindVars || {},
+      }).then(function (cursor) {
+        send({
+          payload: cursor
         });
-    }
-    RED.nodes.registerType("ArangoDB", ArangoDBNode);
+        if (done) done();
+      }).catch(function (error) {
+        send({
+          payload: {
+            "status": "ArangoDB Error",
+            "error": error
+          }
+        });
+        if (done) done();
+      });
+    });
+  }
+  RED.nodes.registerType("ArangoDB", ArangoDBNode);
 }

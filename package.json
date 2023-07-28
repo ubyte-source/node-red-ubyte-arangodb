@@ -11,7 +11,7 @@
     }
   },
   "dependencies": {
-    "arangojs": "^8.1.0"
+    "arangojs": "8.4.0"
   },
   "repository": {
     "type": "git",

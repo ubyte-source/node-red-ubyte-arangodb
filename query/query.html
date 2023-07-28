@@ -1,23 +1,23 @@
 <script type="text/javascript">
-    RED.nodes.registerType('ArangoDB', {
-        category: 'ArangoDB',
-        color: '#d4bd6a',
-        defaults: {
-            name: {
-                value: ""
-            },
-            configuration: {
-                value: "",
-                type: "configuration"
-            }
-        },
-        inputs: 1,
-        outputs: 1,
-        icon: "file.png",
-        label: function () {
-            return this.name || "ArangoDB";
-        }
-    });
+  RED.nodes.registerType('ArangoDB', {
+    category: 'ArangoDB',
+    color: '#d4bd6a',
+    defaults: {
+      name: {
+        value: ""
+      },
+      configuration: {
+        value: "",
+        type: "configuration"
+      }
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "file.png",
+    label: function () {
+      return this.name || "ArangoDB";
+    }
+  });
 </script>
 
 <script type="text/x-red" data-template-name="ArangoDB">

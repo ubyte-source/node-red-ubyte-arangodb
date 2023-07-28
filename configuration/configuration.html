@@ -1,31 +1,31 @@
 <script type="text/javascript">
-    RED.nodes.registerType('configuration', {
-        category: 'config',
-        color: '#a6bbcf',
-        defaults: {
-            url: {
-                value: "http://127.0.0.1:8529",
-                required: true
-            },
-            name: {
-                value: ""
-            },
-            database: {
-                value: "mydatabase",
-                required: true
-            },
-            username: {
-                value: "root",
-                required: true
-            },
-            password: {
-                value: ""
-            }
-        },
-        label: function() {
-            return this.name || this.database;
-        }
-    });
+  RED.nodes.registerType('configuration', {
+    category: 'config',
+    color: '#a6bbcf',
+    defaults: {
+      url: {
+        value: "http://127.0.0.1:8529",
+        required: true
+      },
+      name: {
+        value: ""
+      },
+      database: {
+        value: "mydatabase",
+        required: true
+      },
+      username: {
+        value: "root",
+        required: true
+      },
+      password: {
+        value: ""
+      }
+    },
+    label: function () {
+      return this.name || this.database;
+    }
+  });
 </script>
 
 <script type="text/x-red" data-template-name="configuration">
