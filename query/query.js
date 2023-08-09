@@ -17,17 +17,15 @@ module.exports = function (RED) {
         query: msg.query,
         bindVars: msg.bindVars || {},
       }).then(function (cursor) {
-        send({
-          payload: cursor
-        });
+        msg.payload = cursor;
+        send(msg);
         if (done) done();
       }).catch(function (error) {
-        send({
-          payload: {
-            "status": "ArangoDB Error",
-            "error": error
-          }
-        });
+        msg.payload = {
+          "status": "ArangoDB Error",
+          "error": error
+        };
+        send(msg);
         if (done) done();
       });
     });
